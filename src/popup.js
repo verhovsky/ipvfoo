@@ -144,7 +144,7 @@ function pushSpillCount(count) {
   document.getElementById("spill_count_container").style.display =
       count == 0 ? "none" : "block";
   removeChildren(document.getElementById("spill_count")).appendChild(
-      document.createTextNode(count));
+      document.createTextNode(count + ' ' + (count === 1 ? 'request' : 'requests') + ' omitted'));
   if (IS_MOBILE) {
     zoomHack();
   } else {
