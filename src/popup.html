@@ -26,13 +26,6 @@ body {
   background-color: #fff;
   color: #000;
 }
-/* We want copy-paste to keep the domain in the first column,
-   so this draws a vertical line to fake the "zeroth" column. */
-table {
-  background-image: url("1x1_808080.png");
-  background-position: top 0px left 23px;
-  background-repeat: repeat-y;
-}
 table, td, tr {
   border-width: 1px;
   border-collapse: collapse;
@@ -53,9 +46,6 @@ img::selection {
 }
 .mainRow {
   font-weight: bold;
-}
-.sslImg {
-  padding-right: 6pt;
 }
 .domainTd {
   user-select: text;
@@ -139,9 +129,6 @@ img::selection {
   body {
     background-color: #222;
     color: #eee;
-  }
-  .sslImg {
-    filter: invert(1);
   }
   .snipImg {
     filter: invert(1);

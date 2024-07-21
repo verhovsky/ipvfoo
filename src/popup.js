@@ -215,24 +215,6 @@ function makeImg(src, title) {
   return img;
 }
 
-function makeSslImg(flags) {
-  switch (flags & (FLAG_SSL | FLAG_NOSSL)) {
-    case FLAG_SSL | FLAG_NOSSL:
-      return makeImg(
-          "gray_schrodingers_lock.png",
-          "Mixture of HTTPS and non-HTTPS connections.");
-    case FLAG_SSL:
-      return makeImg(
-          "gray_lock.png",
-          "Connection uses HTTPS.\n" +
-          "Warning: IPvFoo does not verify the integrity of encryption.");
-    default:
-      return makeImg(
-          "gray_unlock.png",
-          "Connection does not use HTTPS.");
-  }
-}
-
 function makeRow(isFirst, tuple) {
   const domain = tuple[0];
   const addr = tuple[1];
@@ -244,13 +226,8 @@ function makeRow(isFirst, tuple) {
     tr.className = "mainRow";
   }
 
-  // Build the SSL icon for the "zeroth" pseudo-column.
-  const sslImg = makeSslImg(flags);
-  sslImg.className = "sslImg";
-
   // Build the "Domain" column.
   const domainTd = document.createElement("td");
-  domainTd.appendChild(sslImg);
   if (domain.length > LONG_DOMAIN) {
     domainTd.appendChild(makeSnippedText(domain, Math.floor(LONG_DOMAIN / 2)));
   } else {
